@@ -1,0 +1,1 @@
+gcc reccat.c -o reccat
