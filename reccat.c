@@ -19,6 +19,8 @@ void process_directory(const char *dirpath, FILE *out, const char *output_path);
 void process_file(const char *filepath, FILE *out);
 int is_binary(const char *filepath);
 int should_skip_dir(const char *dirname);
+int should_skip_file(const char *filename);
+
 
 
 int main(int argc, char *argv[]) {
@@ -86,6 +88,11 @@ void process_directory(const char *dirpath, FILE *out, const char *output_path) 
                 continue;
             }
 
+             // Skip specific files
+            if (should_skip_file(entry->d_name)) {
+                printf("⏭️  Skipping file: %s/%s\n", dirpath, entry->d_name);
+                continue;
+            }
             // Process text files only
             if (!is_binary(path)) {
                 process_file(path, out);
@@ -152,3 +159,11 @@ int should_skip_dir(const char *dirname) {
 }
 
 
+int should_skip_file(const char *filename) {
+    const char *skip_list[] = {"package-lock.json", "yarn.lock", NULL};
+    for (int i = 0; skip_list[i] != NULL; i++) {
+        if (strcmp(filename, skip_list[i]) == 0)
+            return 1;
+    }
+    return 0;
+}
