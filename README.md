@@ -1,6 +1,6 @@
 # reccat
 
-A lightweight C utility that recursively merges all text files in a directory into a single output file with clear headers. Perfect for creating consolidated codebases for documentation, AI context, or archival purposes.
+**reccat** (Recursive Cat) is a lightweight C utility that recursively merges all text files in a directory into a single output file with clear headers. Perfect for creating consolidated codebases for documentation, AI context, or archival purposes.
 
 ## Features
 
