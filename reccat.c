@@ -97,6 +97,7 @@ void process_directory(const char *dirpath, FILE *out, const char *output_path) 
     }
 
     closedir(dir);
+    printf("📁 Exiting directory: %s\n", dirpath);
 }
 
 // Write one file’s contents to the output file with header
