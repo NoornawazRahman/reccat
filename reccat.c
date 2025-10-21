@@ -165,5 +165,10 @@ int should_skip_file(const char *filename) {
         if (strcmp(filename, skip_list[i]) == 0)
             return 1;
     }
+
+    // Skip .svg files
+    const char *ext = strrchr(filename, '.');
+    if (ext && strcmp(ext, ".svg") == 0)
+        return 1;
     return 0;
 }
